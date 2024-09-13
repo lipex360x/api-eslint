@@ -8,6 +8,7 @@
     <img src="https://img.shields.io/badge/Hono-444?logo=hono&logoColor=orange" />
     <img src="https://img.shields.io/badge/ESLint-444?logo=eslint&logoColor=7c7dea" />
     <img src="https://img.shields.io/badge/Prettier-444?logo=prettier&logoColor=F7B93E" />
+    <img src="https://img.shields.io/badge/Bruno-444?logo=bruno&logoColor=F4AA41" />
   </div>
 
 </div>
@@ -39,6 +40,7 @@
 * [Node.js](https://nodejs.org/en/download/package-manager)
 * [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
 * [Bun](https://bun.sh/docs/installation)
+* [Hono testing](https://hono.dev/docs/guides/testing)
 * [Bruno](https://www.usebruno.com/)
 
 **Apps**

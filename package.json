@@ -2,7 +2,9 @@
   "name": "api-eslint",
   "scripts": {
     "dev": "tsx --watch src/server.ts",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+    "build": "rimraf .build && tsup src/server.ts --outDir .build --minify --silent",
+    "start": "node .build/server.js"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",
@@ -17,6 +19,8 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.2.4",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.5.0"

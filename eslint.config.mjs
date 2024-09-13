@@ -10,7 +10,7 @@ export default [
   ...tseslint.configs.recommended,
   { files: ['**/*.{js,mjs,cjs,ts}'] },
   { languageOptions: { globals: globals.node } },
-  { ignores: ['.build'] },
+  { ignores: ['.build', '.bruno'] },
   {
     plugins: {
       'simple-import': simpleImport,

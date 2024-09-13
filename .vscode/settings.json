@@ -3,4 +3,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "jestrunner.jestCommand": "bun test",
+  "jestrunner.jestPath": "${file}",
+  "jestrunner.debugOptions": {
+    "runtimeExecutable": "bun",
+  }
 }

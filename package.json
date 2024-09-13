@@ -1,0 +1,13 @@
+{
+  "name": "api-eslint",
+  "scripts": {
+    "dev": "tsx --watch src/server.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.12.2",
+    "hono": "^4.6.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.1"
+  }
+}

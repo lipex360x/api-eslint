@@ -39,6 +39,7 @@
 * [Node.js](https://nodejs.org/en/download/package-manager)
 * [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
 * [Bun](https://bun.sh/docs/installation)
+* [Bruno](https://www.usebruno.com/)
 
 **Apps**
 

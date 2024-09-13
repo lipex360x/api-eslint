@@ -45,7 +45,7 @@ describe('HTTP', () => {
   })
 
   test('DELETE', async () => {
-    const res = await app.request('/', {
+    const res = await app.request('/user-id', {
       method: 'DELETE',
     })
     expect(res.status).toBe(204)

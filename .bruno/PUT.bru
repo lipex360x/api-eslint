@@ -1,0 +1,17 @@
+meta {
+  name: PUT
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/user-id
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "john travolta"
+  }
+}

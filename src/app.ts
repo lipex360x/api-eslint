@@ -22,7 +22,7 @@ app.put('/:id', async (c) => {
   return c.json({ method: 'PUT' })
 })
 
-app.delete('/', (c) => {
+app.delete('/:id', (c) => {
   return c.body(null, 204)
 })
 

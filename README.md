@@ -131,6 +131,8 @@ export default config
 ```
 </details>
 
+<br />
+
 ## <a name="snippets">©️ Snippets</a>
 
 <details>

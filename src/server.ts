@@ -1,10 +1,11 @@
-import {serve} from '@hono/node-server'
-import {app} from './app'
+import { serve } from '@hono/node-server'
+
+import { app } from './app'
 
 const port = 3000
-console.log('Server started - Port', port)
+console.info('Server started - Port', port)
 
 serve({
   fetch: app.fetch,
-  port
+  port,
 })

@@ -1,13 +1,23 @@
 {
   "name": "api-eslint",
   "scripts": {
-    "dev": "tsx --watch src/server.ts"
+    "dev": "tsx --watch src/server.ts",
+    "lint": "eslint --fix"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",
     "hono": "^4.6.1"
   },
   "devDependencies": {
-    "tsx": "^4.19.1"
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.5.0"
   }
 }

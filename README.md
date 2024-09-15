@@ -134,6 +134,8 @@ export default config
 ```
 </details>
 
+<br />
+
 ## <a name="snippets">©️ Snippets</a>
 
 <details>
@@ -153,8 +155,8 @@ export default config
 }
 ```
 </details>
-<br />
 
+<br />
 
 <details>
 <summary><code>tsconfig.json</code></summary>

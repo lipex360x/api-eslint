@@ -1,6 +1,6 @@
 <div align="center">
 
-## <a name="header">API Lint BoilerPlate</a>
+## <a name="header">REST API BoilerPlate</a>
 
   <div>
     <img src="https://img.shields.io/badge/TypeScript-444?logo=typescript&logoColor=blue" />

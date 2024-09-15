@@ -1,3 +1,5 @@
+import { uid } from 'uid'
+
 export class User {
   readonly userId: string
 
@@ -5,6 +7,6 @@ export class User {
     readonly name: string,
     readonly email: string,
   ) {
-    this.userId = 'userId'
+    this.userId = uid(32)
   }
 }

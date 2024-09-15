@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 
 import { app } from '@/app'
 
-describe('HTTP', () => {
+describe('E2E: HTTP', () => {
   test('GET', async () => {
     const res = await app.request('/')
     const output = await res.text()

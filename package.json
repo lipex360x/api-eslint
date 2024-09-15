@@ -4,7 +4,8 @@
     "dev": "tsx --watch src/server.ts",
     "lint": "eslint --fix",
     "build": "rimraf .build && tsup src/server.ts --outDir .build --minify --silent",
-    "start": "node .build/server.js"
+    "start": "node .build/server.js",
+    "test": "bun test"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",

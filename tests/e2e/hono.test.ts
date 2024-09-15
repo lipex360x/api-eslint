@@ -24,6 +24,7 @@ describe('E2E', () => {
     expect(output).toEqual(
       expect.objectContaining({
         data: {
+          userId: 'userId',
           name: 'john doe',
           email: 'john@mail.com',
         },

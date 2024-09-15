@@ -1,8 +1,12 @@
+import { User } from '@/domain/entities'
+
 export class CreateUserUseCase {
   async execute(input: Input) {
+    const user = new User(input.name, input.email)
     return {
-      name: input.name,
-      email: input.email,
+      userId: user.userId,
+      name: user.name,
+      email: user.email,
     }
   }
 }

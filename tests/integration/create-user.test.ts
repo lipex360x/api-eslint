@@ -11,6 +11,7 @@ describe('INT', () => {
     const usecase = new CreateUserUseCase()
     const output = await usecase.execute(input)
     expect(output).toEqual({
+      userId: 'userId',
       name: 'john doe',
       email: 'john@mail.com',
     })

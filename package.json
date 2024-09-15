@@ -7,7 +7,8 @@
     "start": "node .build/server.js",
     "test": "bun test",
     "test:e2e": "bun test -t \"E2E\"",
-    "test:int": "bun test -t \"INT\""
+    "test:int": "bun test -t \"INT\"",
+    "test:unit": "bun test -t \"UNIT\""
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",

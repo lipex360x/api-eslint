@@ -5,7 +5,9 @@
     "lint": "eslint --fix",
     "build": "rimraf .build && tsup src/server.ts --outDir .build --minify --silent",
     "start": "node .build/server.js",
-    "test": "bun test"
+    "test": "bun test",
+    "test:e2e": "bun test -t \"E2E\"",
+    "test:int": "bun test -t \"INT\""
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",

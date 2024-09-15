@@ -1,7 +1,11 @@
 import type { Context } from 'hono'
 
+import { ShowUserUseCase } from '@/application/usecases'
+
 export class GetController {
   async handle(c: Context) {
-    return c.text('Hello World!')
+    const usecase = new ShowUserUseCase()
+    const output = await usecase.execute()
+    return c.text(output)
   }
 }

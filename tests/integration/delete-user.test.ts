@@ -6,13 +6,14 @@ import type { UserRepository } from '@/infra/repositories'
 import { UserRepositoryMemory } from '@/infra/repositories/memory'
 
 let repository: UserRepository
-
+let usecase: DeleteUserUseCase
 describe('INT', () => {
   beforeEach(() => {
     repository = new UserRepositoryMemory()
+    usecase = new DeleteUserUseCase(repository)
   })
 
-  test('delete user', async () => {
+  test('delete user - success', async () => {
     let outputListUsers = await repository.list()
     expect(outputListUsers).toHaveLength(0)
     const user1 = User.create('john doe', 'johndoe@mail.com')
@@ -23,9 +24,12 @@ describe('INT', () => {
     await repository.save(user3)
     outputListUsers = await repository.list()
     expect(outputListUsers).toHaveLength(3)
-    const usecase = new DeleteUserUseCase(repository)
     await usecase.execute(user3.userId)
     outputListUsers = await repository.list()
     expect(outputListUsers).toHaveLength(2)
+  })
+
+  test('delete user - failed', async () => {
+    expect(() => usecase.execute('fake-user-id')).toThrow(new Error('user not found'))
   })
 })

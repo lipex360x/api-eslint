@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '@/domain/entities'
 import type { UserRepository } from '@/infra/repositories'
 
@@ -6,7 +5,8 @@ export class ShowUserUseCase {
   constructor(private readonly repository: UserRepository) {}
 
   async execute(userId: string): Promise<Output> {
-    const getUser: any = await this.repository.findById(userId)
+    const getUser = await this.repository.findById(userId)
+    if (!getUser) throw new Error('user not found')
     const user = new User(getUser.userId, getUser.name, getUser.email)
     return {
       userId: user.userId,

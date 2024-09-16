@@ -6,7 +6,7 @@ export class UpdateUserUseCase {
 
   async execute(userId: string, input: Input) {
     const getUser = await this.repository.findById(userId)
-    if (!getUser) return null
+    if (!getUser) throw new Error('user not found')
     const payload = {
       name: input.name || getUser.name,
       email: input.email || getUser.email,

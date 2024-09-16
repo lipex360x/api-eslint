@@ -7,7 +7,7 @@ export class ShowUserUseCase {
 
   async execute(userId: string) {
     const getUser: any = this.repository.database.find((data: any) => data.userId === userId)
-    const user = new User(getUser.name, getUser.email)
+    const user = new User(getUser.userId, getUser.name, getUser.email)
     return {
       userId: user.userId,
       name: user.name,

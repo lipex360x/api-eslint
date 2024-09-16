@@ -3,15 +3,19 @@ import { uid } from 'uid'
 import { Email } from '../vo'
 
 export class User {
-  readonly userId: string
   private $email: Email
 
   constructor(
+    readonly userId: string,
     readonly name: string,
     email: string,
   ) {
     this.$email = new Email(email)
-    this.userId = uid(32)
+  }
+
+  static create(name: string, email: string) {
+    const userId = uid(32)
+    return new User(userId, name, email)
   }
 
   get email() {

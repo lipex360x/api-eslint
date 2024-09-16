@@ -1,13 +1,26 @@
+import { User } from '@/domain/entities'
+import type { UserRepository } from '@/infra/repositories'
+
 export class UpdateUserUseCase {
-  async execute(input: Input) {
+  constructor(private readonly repository: UserRepository) {}
+
+  async execute(userId: string, input: Input) {
+    const getUser = await this.repository.findById(userId)
+    if (!getUser) return null
+    const payload = {
+      name: input.name || getUser.name,
+      email: input.email || getUser.email,
+    }
+    const updatedUser = new User(userId, payload.name, payload.email)
+    await this.repository.update(updatedUser)
     return {
-      name: input.name,
-      email: input.email,
+      name: updatedUser.name,
+      email: updatedUser.email,
     }
   }
 }
 
 type Input = {
-  name: string
-  email: string
+  name?: string
+  email?: string
 }

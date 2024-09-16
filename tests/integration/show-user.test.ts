@@ -2,11 +2,11 @@ import { describe, expect, test } from 'bun:test'
 
 import { ShowUserUseCase } from '@/application/usecases'
 import { User } from '@/domain/entities'
-import { UserRepository } from '@/infra/repositories'
+import { UserRepositoryMemory } from '@/infra/repositories/memory'
 
 describe('INT', () => {
   test('show user', async () => {
-    const repository = new UserRepository()
+    const repository = new UserRepositoryMemory()
     const user1 = User.create('john doe', 'johndoe@mail.com')
     const user2 = User.create('john three', 'johntrhee@mail.com')
     const user3 = User.create('john travolta', 'johntravolta@mail.com')

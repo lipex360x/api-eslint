@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '@/domain/entities'
 import type { UserRepository } from '@/infra/repositories'
 
@@ -6,7 +5,7 @@ export class ListUserUseCase {
   constructor(private readonly repository: UserRepository) {}
 
   async execute(): Promise<Output> {
-    const getUsers: any = this.repository.database
+    const getUsers = await this.repository.list()
     const users: UserData[] = []
     for (const data of getUsers) {
       const user = new User(data.userId, data.name, data.email)

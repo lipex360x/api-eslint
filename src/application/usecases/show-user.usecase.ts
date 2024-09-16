@@ -6,7 +6,7 @@ export class ShowUserUseCase {
   constructor(private readonly repository: UserRepository) {}
 
   async execute(userId: string): Promise<Output> {
-    const getUser: any = this.repository.database.find((data: any) => data.userId === userId)
+    const getUser: any = await this.repository.findById(userId)
     const user = new User(getUser.userId, getUser.name, getUser.email)
     return {
       userId: user.userId,

@@ -5,7 +5,7 @@ import type { UserRepository } from '@/infra/repositories'
 export class ShowUserUseCase {
   constructor(private readonly repository: UserRepository) {}
 
-  async execute(userId: string) {
+  async execute(userId: string): Promise<Output> {
     const getUser: any = this.repository.database.find((data: any) => data.userId === userId)
     const user = new User(getUser.userId, getUser.name, getUser.email)
     return {
@@ -14,4 +14,10 @@ export class ShowUserUseCase {
       email: user.email,
     }
   }
+}
+
+type Output = {
+  userId: string
+  name: string
+  email: string
 }

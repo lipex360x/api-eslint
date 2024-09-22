@@ -1,8 +1,14 @@
+import { inject, injectable } from 'tsyringe'
+
 import { User } from '@/domain/entities'
 import type { UserRepository } from '@/infra/repositories'
 
+@injectable()
 export class CreateUserUseCase {
-  constructor(private readonly repository: UserRepository) {}
+  constructor(
+    @inject('userRepository')
+    private readonly repository: UserRepository,
+  ) {}
 
   async execute(input: Input) {
     const user = User.create(input.name, input.email)

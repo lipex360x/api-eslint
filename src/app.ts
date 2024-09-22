@@ -1,11 +1,12 @@
+import 'core-js'
+import '@/infra/containers'
+
 import { Hono } from 'hono'
 
-// import { logger } from 'hono/logger'
-import { baseRoutes } from './infra/routes'
+import { userRoutes } from './infra/routes'
 
 const app = new Hono()
-// app.use(logger())
 
-app.route('', baseRoutes)
+app.route('/', userRoutes)
 
 export { app }

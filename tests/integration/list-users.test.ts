@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test } from 'bun:test'
 
-import { ListUserUseCase } from '@/application/usecases'
+import { ListUsersUseCase } from '@/application/usecases'
 import { User } from '@/domain/entities'
 import type { UserRepository } from '@/infra/repositories'
 import { UserRepositoryMemory } from '@/infra/repositories/memory'
@@ -13,7 +13,7 @@ describe('INT', () => {
   })
 
   test('list users', async () => {
-    const usecase = new ListUserUseCase(repository)
+    const usecase = new ListUsersUseCase(repository)
     let output = await usecase.execute()
     expect(output.data).toHaveLength(0)
     const user1 = User.create('john doe', 'johndoe@mail.com')

@@ -1,8 +1,14 @@
+import { inject, injectable } from 'tsyringe'
+
 import { User } from '@/domain/entities'
 import type { UserRepository } from '@/infra/repositories'
 
-export class ListUserUseCase {
-  constructor(private readonly repository: UserRepository) {}
+@injectable()
+export class ListUsersUseCase {
+  constructor(
+    @inject('userRepository')
+    private readonly repository: UserRepository,
+  ) {}
 
   async execute(): Promise<Output> {
     const getUsers = await this.repository.list()

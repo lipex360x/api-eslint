@@ -2,6 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "skipLibCheck": true,
+    "experimentalDecorators": true,
     "types": ["bun"],
     "paths": {
       "@/*": ["./src/*"],

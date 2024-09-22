@@ -1,8 +1,14 @@
+import { inject, injectable } from 'tsyringe'
+
 import { User } from '@/domain/entities'
 import type { UserRepository } from '@/infra/repositories'
 
+@injectable()
 export class ShowUserUseCase {
-  constructor(private readonly repository: UserRepository) {}
+  constructor(
+    @inject('userRepository')
+    private readonly repository: UserRepository,
+  ) {}
 
   async execute(userId: string): Promise<Output> {
     const getUser = await this.repository.findById(userId)

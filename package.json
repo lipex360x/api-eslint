@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",
+    "core-js": "^3.38.1",
     "email-validator": "^2.0.4",
     "hono": "^4.6.1",
+    "tsyringe": "^4.8.0",
     "uid": "^2.0.2"
   },
   "devDependencies": {

@@ -175,6 +175,11 @@
   dependencies:
     levn "^0.4.1"
 
+"@faker-js/faker@^9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-9.0.1.tgz#5e201ffc4524d00a200c648d2be55be6e25b3c3e"
+  integrity sha512-4mDeYIgM3By7X6t5E6eYwLAa+2h4DeZDF7thhzIg6XB76jeEvMwadYAMCFJL/R4AnEBcAUO9+gL0vhy3s+qvZA==
+
 "@hono/node-server@^1.12.2":
   version "1.12.2"
   resolved "https://registry.yarnpkg.com/@hono/node-server/-/node-server-1.12.2.tgz#383d92e02f8fd75348b8246385de6c45f04b28d1"

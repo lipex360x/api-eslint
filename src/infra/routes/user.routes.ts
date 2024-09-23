@@ -7,6 +7,8 @@ import {
   ShowUserController,
   UpdateUserController,
 } from '../controllers'
+import { validateSchema } from '../middlewares'
+import { createUserSchema } from '../schemas'
 
 const userRoutes = new Hono()
 
@@ -16,7 +18,7 @@ const showUserController = new ShowUserController()
 const updateUserController = new UpdateUserController()
 const deleteUserController = new DeleteUserController()
 
-userRoutes.post('/', createUserController.handle)
+userRoutes.post('/', validateSchema(createUserSchema), createUserController.handle)
 userRoutes.get('/', listUsersController.handle)
 userRoutes.get('/:id', showUserController.handle)
 userRoutes.put('/:id', updateUserController.handle)

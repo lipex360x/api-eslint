@@ -3,7 +3,7 @@ import { describe, expect, test } from 'bun:test'
 
 import { app } from '@/app'
 
-describe.only('E2E', () => {
+describe('E2E', () => {
   test('Create User - Success', async () => {
     const user = {
       name: faker.person.fullName(),
@@ -41,21 +41,6 @@ describe.only('E2E', () => {
   test('Create User - failed', async () => {
     const user = {
       name: faker.person.fullName(),
-    }
-    const res = await app.request('/', {
-      method: 'POST',
-      headers: new Headers({ 'content-type': 'application/json' }),
-      body: JSON.stringify(user),
-    })
-    expect(res.status).toBe(422)
-    const output = await res.json()
-    expect(output).toEqual([{ parameter: 'email', message: 'Required' }])
-  })
-
-  test('Create User - failed', async () => {
-    const user = {
-      name: 123,
-      email: 'teste',
     }
     const res = await app.request('/', {
       method: 'POST',

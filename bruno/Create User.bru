@@ -12,7 +12,22 @@ post {
 
 body:json {
   {
-    "name": "john trovalta",
-    "email": "johntravolta@mail.com"
+    "name": "{{name}}",
+    "email": "{{email}}"
   }
+}
+
+vars:pre-request {
+  name: "hello"
+}
+
+script:pre-request {
+  const { faker } = require('@faker-js/faker');
+  
+  const randomName = faker.name.fullName();
+  const randomEmail = faker.internet.email();
+  
+  bru.setVar("name", randomName)
+  bru.setVar("email", randomEmail)
+  
 }

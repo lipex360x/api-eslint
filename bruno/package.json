@@ -1,0 +1,6 @@
+{
+  "name": "http-request",
+  "dependencies": {
+    "@faker-js/faker": "^9.0.3"
+  }
+}

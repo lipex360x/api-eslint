@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes'
 import { inject, injectable } from 'tsyringe'
 
 import { User } from '@/domain/entities'
@@ -11,6 +12,8 @@ export class CreateUserUseCase {
   ) {}
 
   async execute(input: Input) {
+    const getUser = await this.repository.findByEmail(input.email)
+    if (getUser) throw new Error('invalid credentials', { cause: StatusCodes.UNPROCESSABLE_ENTITY })
     const user = User.create(input.name, input.email)
     await this.repository.save(user)
     return {

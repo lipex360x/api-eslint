@@ -10,7 +10,7 @@ const app = new Hono()
 app.route('/', userRoutes)
 
 app.onError((error, c) => {
-  return c.json(error.message, 404)
+  return c.json(error.message, error.cause || 404)
 })
 
 export { app }

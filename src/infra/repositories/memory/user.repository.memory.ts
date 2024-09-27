@@ -26,6 +26,12 @@ export class UserRepositoryMemory implements UserRepository {
     return new User(getUser.userId, getUser.name, getUser.email)
   }
 
+  async findByEmail(email: string): Promise<User | null> {
+    const getUser: any = this.database.find((data: any) => data.email === email)
+    if (!getUser) return null
+    return new User(getUser.userId, getUser.name, getUser.email)
+  }
+
   async update(user: User): Promise<void> {
     const index = this.database.findIndex((data: any) => data.userId === user.userId)
     this.database[index] = user

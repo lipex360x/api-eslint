@@ -3,6 +3,7 @@ import '@/infra/containers'
 
 import { Hono } from 'hono'
 
+import { errorHandler } from './infra/handlers'
 import { userRoutes } from './infra/routes'
 
 const app = new Hono()
@@ -14,7 +15,8 @@ app.onError((error, c) => {
 app.route('/', userRoutes)
 
 app.onError((error, c) => {
-  return c.json(error.message, error.cause || 404)
+  console.error(error)
+  return errorHandler(c, error)
 })
 
 export { app }

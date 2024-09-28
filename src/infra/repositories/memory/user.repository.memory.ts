@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '@/domain/entities'
 
-import type { UserRepository } from '../user.repository'
+import type { PaginatedResults, UserRepository } from '../user.repository'
 
 export class UserRepositoryMemory implements UserRepository {
   database: unknown[] = []
@@ -10,14 +10,16 @@ export class UserRepositoryMemory implements UserRepository {
     this.database.push(user)
   }
 
-  async list(): Promise<User[]> {
-    const getUsers: any[] = this.database
+  async list(page: number, perPage: number): Promise<PaginatedResults<User>> {
+    const totalPages = Math.ceil(this.database.length / perPage)
+    if (totalPages !== 0 && page > totalPages) throw new Error(`invalid page. last page: ${totalPages}`)
+    const getUsers: any[] = this.database.slice((page - 1) * perPage, page * perPage)
     const users: User[] = []
     for (const data of getUsers) {
       const user = new User(data.userId, data.name, data.email)
       users.push(user)
     }
-    return users
+    return { page, perPage, registers: this.database.length, totalPages, data: users }
   }
 
   async findById(userId: string): Promise<User | null> {

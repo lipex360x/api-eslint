@@ -22,6 +22,14 @@ export default [
       'simple-import/imports': 'error',
       'simple-import/exports': 'error',
       'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 ]

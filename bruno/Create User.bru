@@ -1,0 +1,33 @@
+meta {
+  name: Create User
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "{{name}}",
+    "email": "{{email}}"
+  }
+}
+
+vars:pre-request {
+  name: "hello"
+}
+
+script:pre-request {
+  const { faker } = require('@faker-js/faker');
+  
+  const randomName = faker.name.fullName();
+  const randomEmail = faker.internet.email();
+  
+  bru.setVar("name", randomName)
+  bru.setVar("email", randomEmail)
+  
+}

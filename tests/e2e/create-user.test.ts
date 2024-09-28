@@ -3,7 +3,7 @@ import { describe, expect, test } from 'bun:test'
 
 import { app } from '@/app'
 
-describe.only('E2E', () => {
+describe('E2E', () => {
   test('Create User - Success', async () => {
     const user = {
       name: faker.person.fullName(),
@@ -24,7 +24,7 @@ describe.only('E2E', () => {
     )
   })
 
-  test('Create User - failed', async () => {
+  test('Create User - failed: without name', async () => {
     const user = {
       email: faker.internet.email(),
     }
@@ -38,7 +38,7 @@ describe.only('E2E', () => {
     expect(output).toEqual([{ parameter: 'name', message: 'Required' }])
   })
 
-  test('Create User - failed', async () => {
+  test('Create User - failed: without email', async () => {
     const user = {
       name: faker.person.fullName(),
     }
@@ -52,11 +52,18 @@ describe.only('E2E', () => {
     expect(output).toEqual([{ parameter: 'email', message: 'Required' }])
   })
 
-  test('Create User - failed', async () => {
+  test('Create User - failed: duplicated', async () => {
     const user = {
-      name: 123,
-      email: 'teste',
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
     }
+
+    await app.request('/', {
+      method: 'POST',
+      headers: new Headers({ 'content-type': 'application/json' }),
+      body: JSON.stringify(user),
+    })
+
     const res = await app.request('/', {
       method: 'POST',
       headers: new Headers({ 'content-type': 'application/json' }),
@@ -64,6 +71,6 @@ describe.only('E2E', () => {
     })
     expect(res.status).toBe(422)
     const output = await res.json()
-    expect(output).toEqual([{ parameter: 'email', message: 'Required' }])
+    expect(output).toEqual('invalid credentials')
   })
 })

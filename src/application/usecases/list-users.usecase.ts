@@ -13,12 +13,9 @@ export class ListUsersUseCase {
     private readonly repository: UserRepository,
   ) {}
 
-  async execute(input?: Input): Promise<Output<UserData>> {
+  async execute(input?: Input): Promise<Output> {
     const page = input && input.page && input.page >= 1 ? input.page : this.DEFAULT_PAGE
-    const perPage =
-      input && input.perPage && input.perPage >= 1 && input.perPage <= this.DEFAULT_PERPAGE
-        ? input.perPage
-        : this.DEFAULT_PERPAGE
+    const perPage = input && input.perPage && input.perPage >= 1 ? input.perPage : this.DEFAULT_PERPAGE
     const getUsers = await this.repository.list(page, perPage)
     const users: UserData[] = []
     for (const data of getUsers.data) {
@@ -29,8 +26,13 @@ export class ListUsersUseCase {
         email: user.email,
       })
     }
-    return { page, perPage, registers: getUsers.registers, totalPages: getUsers.totalPages, data: users }
+    return { page, perPage, registers: getUsers.registers, lastPage: getUsers.lastPage, data: users }
   }
+}
+
+type Input = {
+  page?: number
+  perPage?: number
 }
 
 type UserData = {
@@ -39,15 +41,10 @@ type UserData = {
   email: string
 }
 
-type Output<T> = {
+type Output = {
   page: number
   perPage: number
   registers: number
-  totalPages: number
-  data: T[]
-}
-
-type Input = {
-  page?: number
-  perPage?: number
+  lastPage: number
+  data: UserData[]
 }

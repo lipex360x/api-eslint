@@ -4,7 +4,7 @@ import { describe, expect, test } from 'bun:test'
 import { app } from '@/app'
 
 describe('E2E', () => {
-  test('DELETE', async () => {
+  test('Delete User', async () => {
     const user1 = {
       name: faker.person.fullName(),
       email: faker.internet.email(),
@@ -25,31 +25,35 @@ describe('E2E', () => {
     })
     const responseList1 = await app.request('/')
     const outputList1 = await responseList1.json()
-    expect(outputList1).toEqual({
-      data: expect.arrayContaining([
-        {
-          userId: expect.any(String),
-          ...user1,
-        },
-        {
-          userId: expect.any(String),
-          ...user2,
-        },
-      ]),
-    })
+    expect(outputList1).toEqual(
+      expect.objectContaining({
+        data: expect.arrayContaining([
+          {
+            userId: expect.any(String),
+            ...user1,
+          },
+          {
+            userId: expect.any(String),
+            ...user2,
+          },
+        ]),
+      }),
+    )
     const outputCreate = await responseCreate.json()
     const responseDelete = await app.request(`/${outputCreate.userId}`, { method: 'DELETE' })
     expect(responseDelete.status).toBe(204)
     const responseList2 = await app.request('/')
     const outputList2 = await responseList2.json()
-    expect(outputList2).toEqual({
-      data: expect.arrayContaining([
-        {
-          userId: expect.any(String),
-          ...user1,
-        },
-      ]),
-    })
+    expect(outputList2).toEqual(
+      expect.objectContaining({
+        data: expect.arrayContaining([
+          {
+            userId: expect.any(String),
+            ...user1,
+          },
+        ]),
+      }),
+    )
   })
 
   test('Delete User - Failed', async () => {

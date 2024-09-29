@@ -5,7 +5,12 @@ meta {
 }
 
 get {
-  url: http://localhost:3000/user-id
+  url: http://localhost:3000?page=1&perPage=2
   body: none
   auth: none
+}
+
+params:query {
+  page: 1
+  perPage: 2
 }

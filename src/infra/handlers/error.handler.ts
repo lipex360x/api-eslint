@@ -1,6 +1,6 @@
 import type { Context } from 'hono'
 
-export const errorHandler = (c: Context, error: Error) => {
+export const errorHandler = (error: Error, c: Context) => {
   let parsedError = null
   try {
     parsedError = JSON.parse(error.message)
@@ -8,6 +8,5 @@ export const errorHandler = (c: Context, error: Error) => {
     parsedError = error.message
   }
   console.error(parsedError)
-  const statusCode = error.cause || 400
-  return c.json(parsedError, statusCode)
+  return c.json(parsedError, error.cause || 400)
 }

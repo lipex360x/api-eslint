@@ -15,8 +15,7 @@ app.onError((error, c) => {
 app.route('/', userRoutes)
 
 app.onError((error, c) => {
-  console.error(error)
-  return errorHandler(c, error)
+  return errorHandler(error, c)
 })
 
 export { app }

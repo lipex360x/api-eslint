@@ -11,15 +11,18 @@ export class UserRepositoryMemory implements UserRepository {
   }
 
   async list(page: number, perPage: number): Promise<PaginatedResults<User>> {
-    const totalPages = Math.ceil(this.database.length / perPage)
-    if (totalPages !== 0 && page > totalPages) throw new Error(`invalid page. last page: ${totalPages}`)
-    const getUsers: any[] = this.database.slice((page - 1) * perPage, page * perPage)
+    const start = (page - 1) * perPage
+    const end = page * perPage
+    const registers = this.database.length
+    const lastPage = Math.ceil(registers / perPage)
+    if (lastPage !== 0 && page > lastPage) throw new Error(`invalid page. last page = ${lastPage}`)
+    const getUsers: any[] = this.database
     const users: User[] = []
-    for (const data of getUsers) {
+    for (const data of getUsers.slice(start, end)) {
       const user = new User(data.userId, data.name, data.email)
       users.push(user)
     }
-    return { page, perPage, registers: this.database.length, totalPages, data: users }
+    return { data: users, lastPage, registers }
   }
 
   async findById(userId: string): Promise<User | null> {

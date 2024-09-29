@@ -1,7 +1,7 @@
 import type { ZodTypeAny } from 'zod'
 import { z } from 'zod'
 
-const zodTransformStringToNumber = (zodPipe: ZodTypeAny, message: string) => {
+const stringToNumber = (zodPipe: ZodTypeAny, message: string) => {
   return z
     .string()
     .optional()
@@ -12,6 +12,6 @@ const zodTransformStringToNumber = (zodPipe: ZodTypeAny, message: string) => {
 }
 
 export const listUsersSchema = z.object({
-  page: zodTransformStringToNumber(z.number(), 'invalid parameter: page'),
-  perPage: zodTransformStringToNumber(z.number(), 'invalid parameter: perPage'),
+  page: stringToNumber(z.number(), 'invalid parameter: page'),
+  perPage: stringToNumber(z.number(), 'invalid parameter: perPage'),
 })

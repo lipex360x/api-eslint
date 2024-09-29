@@ -1,10 +1,8 @@
 import type { User } from '@/domain/entities'
 
 export type PaginatedResults<T> = {
-  page: number
-  perPage: number
   registers: number
-  totalPages: number
+  lastPage: number
   data: T[]
 }
 

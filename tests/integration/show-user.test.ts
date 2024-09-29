@@ -3,14 +3,14 @@ import { beforeEach, describe, expect, test } from 'bun:test'
 import { ShowUserUseCase } from '@/application/usecases'
 import { User } from '@/domain/entities'
 import type { UserRepository } from '@/infra/repositories'
-import { UserRepositoryMemory } from '@/infra/repositories/memory'
+import { UserRepositoryPostgres } from '@/infra/repositories/postgres'
 
 let repository: UserRepository
 let usecase: ShowUserUseCase
 
 describe('INT', () => {
   beforeEach(() => {
-    repository = new UserRepositoryMemory()
+    repository = new UserRepositoryPostgres()
     usecase = new ShowUserUseCase(repository)
   })
 

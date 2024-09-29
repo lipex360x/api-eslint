@@ -10,7 +10,7 @@ export interface UserRepository {
   save(user: User): Promise<void>
   list(page: number, perPage: number): Promise<PaginatedResults<User>>
   findById(userId: string): Promise<User | null>
-  findByEmail(userId: string): Promise<User | null>
+  findByEmail(email: string): Promise<User | null>
   update(user: User): Promise<void>
   delete(userId: string): Promise<void>
 }

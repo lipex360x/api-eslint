@@ -3,13 +3,13 @@ import { beforeEach, describe, expect, test } from 'bun:test'
 
 import { CreateUserUseCase } from '@/application/usecases'
 import type { UserRepository } from '@/infra/repositories'
-import { UserRepositoryMemory } from '@/infra/repositories/memory'
+import { UserRepositoryPostgres } from '@/infra/repositories/postgres'
 
 let repository: UserRepository
 
 describe('INT', () => {
   beforeEach(() => {
-    repository = new UserRepositoryMemory()
+    repository = new UserRepositoryPostgres()
   })
 
   test('create user - success', async () => {

@@ -74,7 +74,7 @@ describe('E2E', () => {
     expect(output.data).toHaveLength(1)
   })
 
-  test.only('List Users - With Data (with pagination)', async () => {
+  test('List Users - With Data (with pagination)', async () => {
     const res = await app.request('/?page=a&perPage=b')
     const output = await res.json()
     expect(output).toHaveLength(2)

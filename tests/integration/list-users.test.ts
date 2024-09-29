@@ -10,7 +10,6 @@ let repository: UserRepository
 describe('INT', () => {
   beforeEach(() => {
     repository = new UserRepositoryMemory()
-    // repository = new UserRepositoryPostgres()
   })
 
   test('list users - not paginated', async () => {

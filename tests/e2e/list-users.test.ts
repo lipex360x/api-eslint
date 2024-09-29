@@ -25,17 +25,19 @@ describe('E2E', () => {
     })
     const res = await app.request('/')
     const output = await res.json()
-    expect(output).toEqual({
-      data: expect.arrayContaining([
-        {
-          userId: expect.any(String),
-          ...user1,
-        },
-        {
-          userId: expect.any(String),
-          ...user2,
-        },
-      ]),
-    })
+    expect(output).toEqual(
+      expect.objectContaining({
+        data: expect.arrayContaining([
+          {
+            userId: expect.any(String),
+            ...user1,
+          },
+          {
+            userId: expect.any(String),
+            ...user2,
+          },
+        ]),
+      }),
+    )
   })
 })

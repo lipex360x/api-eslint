@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes'
 import { inject, injectable } from 'tsyringe'
 
 import { User } from '@/domain/entities'
@@ -12,7 +13,7 @@ export class ShowUserUseCase {
 
   async execute(userId: string): Promise<Output> {
     const getUser = await this.repository.findById(userId)
-    if (!getUser) throw new Error('user not found')
+    if (!getUser) throw new Error('user not found', { cause: StatusCodes.NOT_FOUND })
     const user = new User(getUser.userId, getUser.name, getUser.email)
     return {
       userId: user.userId,

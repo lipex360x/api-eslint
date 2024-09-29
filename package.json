@@ -14,6 +14,7 @@
     "@hono/node-server": "^1.12.2",
     "@hono/zod-validator": "^0.2.2",
     "core-js": "^3.38.1",
+    "dotenv": "^16.4.5",
     "email-validator": "^2.0.4",
     "hono": "^4.6.1",
     "http-status-codes": "^2.3.0",

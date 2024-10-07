@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Clone Repository
         run: gh repo clone lipex360x/rest-api-boilerplate .
-      - name: Install pacakges
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Install packages
         run: yarn
       - name: Build App
         run: yarn build

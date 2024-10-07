@@ -14,7 +14,9 @@ jobs:
       - name: Clone Repository
         run: gh repo clone lipex360x/rest-api-boilerplate .
       - name: Source bashrc
-        run: . /home/ubuntu/.bashrc
+        run: |
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
       - name: Setup yarn
         run: npm install -g yarn
       - name: Install packages

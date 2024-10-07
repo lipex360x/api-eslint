@@ -1,0 +1,36 @@
+name: Deploy Bun Application
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: [self-hosted]
+    defaults:
+      run:
+        working-directory: /home/ubuntu/app
+    steps:
+      - name: Clone Repository
+        run: gh repo clone lipex360x/rest-api-boilerplate .
+      - name: Install pacakges
+        run: yarn
+      - name: Build App
+        run: yarn build
+      - name: Start Application
+        run: pm2 start .build/server.js --name api
+      - name: PM2 Startup
+        run: pm2 startup
+      - name: PM2 save
+        run: pm2 save --force
+      
+      # - name: Stop Application
+      #   run: pm2 stop app
+      # - name: Reset Git
+      #   run: git reset --hard HEAD
+      # - name: Pull code from Github 
+      #   run: gh repo clone lipex360x/rest-api-boilerplate
+      # - name: Install dependencies
+      #   run: bun install
+      # - name: Execute migrations
+      #   run: bun db:migrate
+      # - name: Restart Application
+      #   run: pm2 start app

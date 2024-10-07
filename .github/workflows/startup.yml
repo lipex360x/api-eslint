@@ -10,6 +10,8 @@ jobs:
         working-directory: /home/ubuntu/app
     steps:
       - name: Clone Repository
+        run: rm -rf app && mkdir app
+      - name: Clone Repository
         run: gh repo clone lipex360x/rest-api-boilerplate .
       - name: Setup yarn
         run: npm install -g yarn

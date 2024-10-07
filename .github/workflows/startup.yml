@@ -1,4 +1,4 @@
-name: Deploy Bun Application
+name: Deploy Application
 
 on: workflow_dispatch
 
@@ -22,20 +22,3 @@ jobs:
           pm2 delete all || : && pm2 start .build/server.js -i 1 --name api
       - name: PM2 save
         run: pm2 save --force
-      # - name: Start Application
-      #   run: pm2 start .build/server.js --name api --force
-      # - name: PM2 save
-      #   run: pm2 save --force
-      
-      # - name: Stop Application
-      #   run: pm2 stop app
-      # - name: Reset Git
-      #   run: git reset --hard HEAD
-      # - name: Pull code from Github 
-      #   run: gh repo clone lipex360x/rest-api-boilerplate
-      # - name: Install dependencies
-      #   run: bun install
-      # - name: Execute migrations
-      #   run: bun db:migrate
-      # - name: Restart Application
-      #   run: pm2 start app

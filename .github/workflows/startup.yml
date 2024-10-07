@@ -17,6 +17,10 @@ jobs:
         run: yarn
       - name: Build App
         run: yarn build
+      - name: PM2 delete List
+        run: pm2 delete all
+      - name: PM2 save
+        run: pm2 save --force
       - name: Start Application
         run: pm2 start .build/server.js --name api --force
       - name: PM2 save

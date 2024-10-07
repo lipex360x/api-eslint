@@ -13,20 +13,12 @@ jobs:
         run: rm -rf /home/ubuntu/app && mkdir /home/ubuntu/app
       - name: Clone Repository
         run: gh repo clone lipex360x/rest-api-boilerplate .
-      - name: Source bashrc
-        run: |
-          export NVM_DIR=~/.nvm
-          source ~/.nvm/nvm.sh
-      - name: Setup yarn
-        run: npm install -g yarn
       - name: Install packages
         run: yarn
       - name: Build App
         run: yarn build
       - name: Start Application
-        run: pm2 start .build/server.js --name api
-      # - name: PM2 Startup
-      #   run: pm2 startup
+        run: pm2 start .build/server.js --name api --force
       - name: PM2 save
         run: pm2 save --force
       

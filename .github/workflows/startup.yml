@@ -9,7 +9,7 @@ jobs:
       run:
         working-directory: /home/ubuntu/app
     steps:
-      - name: Clone Repository
+      - name: Clean directory
         run: rm -rf /home/ubuntu/app && mkdir /home/ubuntu/app
       - name: Clone Repository
         run: gh repo clone lipex360x/rest-api-boilerplate .
